@@ -86,7 +86,7 @@ jobs:
     strategy:
       fail-fast: true
     runs-on: ubuntu-20.04
-    if: github.repository == 'azerothcore/azerothcore-wotlk'
+    # if: github.repository == 'azerothcore/azerothcore-wotlk'
     env:
       DOCKER_EXTENDS_BIND: abstract-no-bind
       DOCKER_BUILD_WORLD_TARGET: worldserver
