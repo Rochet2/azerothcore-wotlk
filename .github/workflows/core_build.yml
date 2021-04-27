@@ -101,7 +101,7 @@ jobs:
         run: |
           docker --version
           docker-compose --version
-          DOCKER_BUILDKIT=1 docker-compose pull --ignore-pull-failures
+          DOCKER_BUILDKIT=1 docker-compose pull ac-worldserver
       - name: Build
         #env:
         #  DOCKER_IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
