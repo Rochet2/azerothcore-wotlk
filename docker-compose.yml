@@ -83,6 +83,10 @@ services:
       context: .
       target: ${DOCKER_BUILD_WORLD_TARGET:-dev}
       dockerfile: ./apps/docker/Dockerfile
+      cache_from:
+        - acore/worldserver:master
+        - acore/authserver:master
+        - acore/dev-server:master
     ports:
       - ${DOCKER_WORLD_EXTERNAL_PORT:-8085}:8085
       - ${DOCKER_SOAP_EXTERNAL_PORT:-7878}:7878
@@ -101,6 +105,10 @@ services:
       context: .
       target: ${DOCKER_BUILD_AUTH_TARGET:-dev}
       dockerfile: ./apps/docker/Dockerfile
+      cache_from:
+        - acore/worldserver:master
+        - acore/authserver:master
+        - acore/dev-server:master
     ports:
       - ${DOCKER_AUTH_EXTERNAL_PORT:-3724}:3724
     profiles: [all, app, authserver]
@@ -124,6 +132,10 @@ services:
       args:
         USER_ID: ${DOCKER_USER_ID:-1000}
         GROUP_ID: ${DOCKER_GROUP_ID:-1000}
+      cache_from:
+        - acore/worldserver:master
+        - acore/authserver:master
+        - acore/dev-server:master
     extends: ${DOCKER_EXTENDS_BIND:-abstract-bind}
     env_file:
         ${DOCKER_AC_ENV_FILE:-conf/dist/env.ac}
